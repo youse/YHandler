@@ -67,6 +67,7 @@ class YHandler(object):
 
 
 	def call_api(self, url, req_meth='GET', data=None, headers=None):
+		print url
 		req_oauth_hook = OAuthHook(self.authd['oauth_token'], self.authd['oauth_token_secret'], self.authd['consumer_key'], self.authd['consumer_secret'], header_auth=True)
 		client = requests.session(hooks={'pre_request':req_oauth_hook})
 		return client.request(method=req_meth, url=url, data=data, headers=headers)
@@ -77,9 +78,9 @@ class YHandler(object):
 		if ('oauth_token' not in self.authd) or ('oauth_token_secret' not in self.authd) or (not (self.authd['oauth_token'] and self.authd['oauth_token_secret'])):
 			self.reg_user()
 		query = self.call_api(url, req_meth, data=data, headers=headers)
+		
 		if query.status_code != 200: #We have both authtokens but are being rejected. Assume token expired. This could be a LOT more robust
 			self.refresh_token()
 			query = self.call_api(url, req_meth, data=data, headers=headers)
+		
 		return query
-
-	
