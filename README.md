@@ -3,13 +3,13 @@ YHandler
 
 Yahoo Fantasy Sports OAuth And Request Handler
 
-This is the Python Script I use to access the Yahoo Fantasy Sports API via OAuth for my desktop app. It's far from polished, and not the most generalized.  However, following these steps should work:
-- Place your consumer key, and consumer secret in the auth.csv file 
+This connects to the Yahoo Fantasy Sports API via OAuth. It's not robust, but following these steps should work:
+- Place your client key, and client secret in a file, e.g. auth.csv
 - call: import from YHandler *
 - create a handler with: var_name = YHandler('auth.csv')
 
-The app needs the following libraries, which you can install using pip:
+This is a fork of https://github.com/mleveck/YHandler refactored to work with the newer requests-1.0+ and requests-oauthlib, which you can install using pip:
 
-**Requests:** http://docs.python-requests.org/en/latest/
+**requests:** http://docs.python-requests.org/en/latest/
 
-**Requests-oauth:** https://github.com/maraujop/requests-oauth
+**requests-oauthlib:** https://github.com/requests/requests-oauthlib
