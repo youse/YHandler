@@ -48,8 +48,8 @@ class YHandler(object):
         #now send user to approve app
         print "You will now be directed to a website for authorization.\n\
         Please authorize the app, and then copy and paste the provide PIN below."
-        #webbrowser.open("%s?oauth_token=%s" % (AUTHORIZATION_URL, self.authd['oauth_token']))
-        print "%s?oauth_token=%s" % (AUTHORIZATION_URL, self.authd['resource_owner_key'])
+        webbrowser.open("%s?oauth_token=%s" % (AUTHORIZATION_URL, self.authd['resource_owner_key']))
+        #print "%s?oauth_token=%s" % (AUTHORIZATION_URL, self.authd['resource_owner_key'])
         self.authd['verifier'] = raw_input('Please enter your PIN:')
 
         self.get_final_token()
